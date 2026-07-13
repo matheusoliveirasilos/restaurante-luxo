@@ -877,6 +877,25 @@ input, select {
     gap: 1.8rem;
     box-shadow: -10px 0 30px rgba(0,0,0,0.4);
     z-index: 950;
+    overflow: hidden;
+  }
+  .navbar.menu-open .nav-links::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 300px;
+    background-image: url('https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=800&q=60');
+    background-size: cover;
+    background-position: center 35%;
+    opacity: 0.2;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 55%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 55%, rgba(0,0,0,0) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .navbar.menu-open .nav-links a {
+    position: relative;
+    z-index: 1;
   }
   .navbar.menu-open .nav-cta {
     display: none;
