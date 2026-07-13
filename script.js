@@ -65,17 +65,37 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ---------------------------------------------------------
      3. PARALLAX SUAVE NO HERO
      Move a imagem de fundo em velocidade diferente do scroll.
+     Usa requestAnimationFrame para evitar tremores/engasgos, e
+     fica desativado em telas de toque (celular/tablet), onde o
+     scroll por arrasto costuma causar tremor visual no parallax.
   --------------------------------------------------------- */
   const heroBg = document.getElementById("hero-bg");
   const hero = document.getElementById("hero");
+  const isTouchDevice = window.matchMedia("(hover: none), (pointer: coarse)").matches;
 
-  const handleParallax = () => {
+  let parallaxTicking = false;
+
+  const applyParallax = () => {
     const scrollY = window.scrollY;
     if (scrollY < hero.offsetHeight) {
-      heroBg.style.transform = `translateY(${scrollY * 0.35}px) scale(1.05)`;
+      heroBg.style.transform = `translate3d(0, ${(scrollY * 0.35).toFixed(1)}px, 0) scale(1.05)`;
+    }
+    parallaxTicking = false;
+  };
+
+  const handleParallax = () => {
+    if (!parallaxTicking) {
+      requestAnimationFrame(applyParallax);
+      parallaxTicking = true;
     }
   };
-  window.addEventListener("scroll", handleParallax, { passive: true });
+
+  if (isTouchDevice) {
+    // Em dispositivos de toque, mantém a imagem fixa e estável (sem parallax) para não tremer.
+    heroBg.style.transform = "translate3d(0, 0, 0) scale(1.05)";
+  } else {
+    window.addEventListener("scroll", handleParallax, { passive: true });
+  }
 
   /* ---------------------------------------------------------
      4. ANIMAÇÕES DE SCROLL (Intersection Observer)
