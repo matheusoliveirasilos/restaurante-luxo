@@ -277,6 +277,8 @@ input, select {
   gap: 5px;
   background: none;
   border: none;
+  position: relative;
+  z-index: 960;
 }
 .nav-toggle span {
   width: 24px;
@@ -839,6 +841,13 @@ input, select {
 /* ================================================================
    RESPONSIVE
    ================================================================ */
+@media (max-width: 1180px) {
+  .navbar-inner { gap: 1.2rem; }
+  .nav-links { gap: 1.3rem; }
+  .nav-links a { font-size: 0.68rem; letter-spacing: 0.1em; }
+  .nav-cta { padding: 0.85rem 1.6rem; }
+}
+
 @media (max-width: 1024px) {
   :root { --section-padding: 6rem 0; }
   .about-grid, .chef-grid, .reservations-grid { grid-template-columns: 1fr; gap: 3rem; }
@@ -870,15 +879,26 @@ input, select {
     z-index: 950;
   }
   .navbar.menu-open .nav-cta {
-    display: inline-block;
-    position: fixed;
-    top: 1.4rem;
-    left: 2rem;
-    z-index: 960;
+    display: none;
   }
   .navbar.menu-open .nav-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
   .navbar.menu-open .nav-toggle span:nth-child(2) { opacity: 0; }
   .navbar.menu-open .nav-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(2px);
+    z-index: 940;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+  }
+  .navbar.menu-open .nav-overlay {
+    display: block;
+    opacity: 1;
+  }
 
   .stats-row { grid-template-columns: repeat(2, 1fr); }
 }

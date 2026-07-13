@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   --------------------------------------------------------- */
   const navbar = document.getElementById("navbar");
   const navToggle = document.getElementById("nav-toggle");
+  const navOverlay = document.getElementById("nav-overlay");
 
   const handleNavbarScroll = () => {
     if (window.scrollY > 60) {
@@ -34,17 +35,31 @@ document.addEventListener("DOMContentLoaded", () => {
   handleNavbarScroll();
   window.addEventListener("scroll", handleNavbarScroll, { passive: true });
 
+  const closeMobileMenu = () => {
+    navbar.classList.remove("menu-open");
+    navToggle.setAttribute("aria-expanded", "false");
+  };
+
   navToggle.addEventListener("click", () => {
     const isOpen = navbar.classList.toggle("menu-open");
     navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
   });
 
-  // Fecha o menu mobile ao clicar em um link
+  // Fecha o menu mobile ao clicar em um link (item do menu)
   document.querySelectorAll(".nav-links a").forEach((link) => {
-    link.addEventListener("click", () => {
-      navbar.classList.remove("menu-open");
-      navToggle.setAttribute("aria-expanded", "false");
-    });
+    link.addEventListener("click", closeMobileMenu);
+  });
+
+  // Fecha o menu mobile ao clicar fora dele (área escurecida)
+  if (navOverlay) {
+    navOverlay.addEventListener("click", closeMobileMenu);
+  }
+
+  // Fecha o menu mobile ao pressionar Esc
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && navbar.classList.contains("menu-open")) {
+      closeMobileMenu();
+    }
   });
 
   /* ---------------------------------------------------------
