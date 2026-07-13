@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Belle Époque — Restaurante de Alta Gastronomia em Paris</title>
+  <meta name="description" content="La Belle Époque é um restaurante de alta gastronomia que celebra a tradição francesa desde 1907. Reserve sua mesa e viva uma experiência sensorial inesquecível." />
+  <meta name="keywords" content="restaurante de luxo, alta gastronomia, fine dining, cozinha francesa, La Belle Époque, chef executivo, reservas" />
+  <meta name="author" content="La Belle Époque" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / SEO social -->
+  <meta property="og:title" content="La Belle Époque — Alta Gastronomia Francesa" />
+  <meta property="og:description" content="Uma experiência gastronômica atemporal no coração de Paris desde 1907." />
+  <meta property="og:type" content="restaurant.restaurant" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:wght@500;600;700;800&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===================== LOADING SCREEN ===================== -->
+  <div id="loading-screen" aria-hidden="true">
+    <div class="loader-content">
+      <svg class="loader-emblem" viewBox="0 0 120 120" fill="none">
+        <circle cx="60" cy="60" r="46" stroke="#D4AF37" stroke-width="1"/>
+        <path d="M60 20 L64 55 L60 60 L56 55 Z" fill="#D4AF37"/>
+        <text x="60" y="68" text-anchor="middle" font-family="Playfair Display, serif" font-size="26" fill="#D4AF37">B</text>
+      </svg>
+      <p class="loader-text">LA BELLE ÉPOQUE</p>
+      <div class="loader-bar"><span></span></div>
+    </div>
+  </div>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#hero" class="nav-logo">La Belle&nbsp;Époque</a>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="#sobre">História</a>
+        <a href="#menu">Menu</a>
+        <a href="#chef">Chef</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#reservas">Reservas</a>
+        <a href="#localizacao">Localização</a>
+      </nav>
+
+      <a href="#reservas" class="btn btn-gold nav-cta">Reservar Mesa</a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" id="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content reveal-fade">
+      <span class="eyebrow">Paris · Est. 1907</span>
+      <h1 class="hero-title">La Belle&nbsp;Époque</h1>
+      <div class="ornament-divider" aria-hidden="true">
+        <svg viewBox="0 0 200 24"><path d="M0 12 C 40 0, 60 24, 100 12 C 140 0, 160 24, 200 12" stroke="#D4AF37" stroke-width="1" fill="none"/><circle cx="100" cy="12" r="3" fill="#D4AF37"/></svg>
+      </div>
+      <p class="hero-slogan">Onde cada prato é uma memória e cada noite, uma época de ouro.</p>
+      <a href="#reservas" class="btn btn-outline-gold">Reservar Mesa</a>
+    </div>
+
+    <a href="#sobre" class="scroll-cue" aria-label="Rolar para baixo">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- ===================== SOBRE ===================== -->
+  <section class="about" id="sobre">
+    <div class="container about-grid">
+      <div class="about-image reveal-left">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80" alt="Chef finalizando um prato refinado no La Belle Époque" loading="lazy" />
+        <div class="about-image-frame" aria-hidden="true"></div>
+      </div>
+
+      <div class="about-text reveal-right">
+        <span class="eyebrow">Nossa História</span>
+        <h2 class="section-title">Uma tradição que atravessou gerações</h2>
+        <p class="drop-cap">
+          Fundado em 1907 por Augustin Larousse, o La Belle Époque nasceu de um sonho simples: transformar
+          o ato de comer em uma celebração da vida. Instalado em um antigo casarão à beira do Sena, o
+          restaurante preservou até hoje o piso de mármore original, os lustres de cristal e o silêncio
+          reverente que só os grandes salões sabem guardar.
+        </p>
+        <p>
+          Ao longo de mais de cem anos, a cozinha permaneceu fiel a um princípio: ingredientes selecionados
+          a dedo, técnicas clássicas francesas e um respeito quase artesanal pelo tempo — o tempo de reduzir
+          um molho, de curar uma carne, de deixar uma sobremesa repousar até o ponto exato. Cada geração de
+          chefs deixou sua assinatura, mas todas mantiveram acesa a mesma chama: a hospitalidade acima de tudo.
+        </p>
+        <div class="stats-row" id="stats-row">
+          <div class="stat">
+            <span class="stat-number" data-target="117">0</span>
+            <span class="stat-label">Anos de História</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="48">0</span>
+            <span class="stat-label">Pratos Assinatura</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="3">0</span>
+            <span class="stat-label">Estrelas Michelin</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="52000" data-suffix="+">0</span>
+            <span class="stat-label">Clientes Atendidos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true">
+    <svg viewBox="0 0 400 20"><path d="M0 10 Q 100 -6 200 10 T 400 10" stroke="#D4AF37" stroke-width="1" fill="none" opacity="0.5"/></svg>
+  </div>
+
+  <!-- ===================== MENU ===================== -->
+  <section class="menu" id="menu">
+    <div class="container">
+      <div class="section-heading reveal-fade">
+        <span class="eyebrow">Carte du Jour</span>
+        <h2 class="section-title">Menu em Destaque</h2>
+        <p class="section-subtitle">Uma seleção autoral que muda com as estações, sempre fiel à tradição francesa.</p>
+      </div>
+
+      <div class="menu-columns">
+        <div class="menu-column reveal-fade">
+          <h3 class="menu-column-title">Entradas</h3>
+
+          <div class="menu-item">
+            <div class="menu-item-head"><span>Foie Gras Poêlé</span><span class="dots"></span><span class="price">R$ 98</span></div>
+            <p>Fígado de pato selado, compota de figos ao Porto e brioche tostado.</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-head"><span>Vieiras Doradas</span><span class="dots"></span><span class="price">R$ 112</span></div>
+            <p>Vieiras da Normandia, purê de couve-flor trufada e manteiga de avelãs.</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-head"><span>Consommé Impérial</span><span class="dots"></span><span class="price">R$ 76</span></div>
+            <p>Caldo clarificado de ave, quenelle de aves e ervas finas do jardim.</p>
+          </div>
+        </div>
+
+        <div class="menu-column menu-column-featured reveal-fade">
+          <h3 class="menu-column-title">Pratos Principais</h3>
+
+          <div class="menu-item">
+            <div class="menu-item-head"><span>Filet de Boeuf Rossini</span><span class="dots"></span><span class="price">R$ 245</span></div>
+            <p>Filé mignon grelhado, escalope de foie gras, molho Périgueux e batatas soufflé.</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-head"><span>Canard à l'Orange</span><span class="dots"></span><span class="price">R$ 198</span></div>
+            <p>Pato assado lentamente, redução de laranja-bahia e legumes glaceados.</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-head"><span>Bouillabaisse Royale</span><span class="dots"></span><span class="price">R$ 219</span></div>
+            <p>Ensopado de frutos do mar do Mediterrâneo, rouille e crostini de alho.</p>
+          </div>
+        </div>
+
+        <div class="menu-column reveal-fade">
+          <h3 class="menu-column-title">Sobremesas</h3>
+
+          <div class="menu-item">
+            <div class="menu-item-head"><span>Soufflé au Chocolat</span><span class="dots"></span><span class="price">R$ 68</span></div>
+            <p>Soufflé de chocolate 70%, sorvete de baunilha de Madagascar.</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-head"><span>Tarte Tatin</span><span class="dots"></span><span class="price">R$ 62</span></div>
+            <p>Torta invertida de maçã caramelizada com crème fraîche.</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-head"><span>Crème Brûlée</span><span class="dots"></span><span class="price">R$ 58</span></div>
+            <p>Creme de baunilha bourbon com crosta de açúcar caramelizado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CHEF ===================== -->
+  <section class="chef" id="chef">
+    <div class="container chef-grid">
+      <div class="chef-portrait reveal-left">
+        <svg class="chef-portrait-svg" viewBox="0 0 600 700" role="img" aria-label="Ilustração do Chef Executivo Étienne Rousseau" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="chefBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#262422"/>
+              <stop offset="100%" stop-color="#0F0F0F"/>
+            </linearGradient>
+            <linearGradient id="chefGold" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#e6c866"/>
+              <stop offset="100%" stop-color="#D4AF37"/>
+            </linearGradient>
+          </defs>
+          <rect width="600" height="700" fill="url(#chefBg)"/>
+          <!-- moldura decorativa fina -->
+          <rect x="24" y="24" width="552" height="652" fill="none" stroke="#D4AF37" stroke-opacity="0.35"/>
+          <!-- toque (chapéu de chef) -->
+          <path d="M255 190c0-30 20-48 45-48s45 18 45 48c14 4 22 16 22 30 0 8-3 15-8 20H241c-5-5-8-12-8-20 0-14 8-26 22-30z" fill="#1C1C1C" stroke="url(#chefGold)" stroke-width="2"/>
+          <rect x="238" y="238" width="124" height="18" rx="4" fill="#1C1C1C" stroke="url(#chefGold)" stroke-width="2"/>
+          <!-- busto / silhueta -->
+          <path d="M180 620c10-95 60-148 120-148s110 53 120 148z" fill="#1C1C1C" stroke="url(#chefGold)" stroke-width="2"/>
+          <!-- rosto -->
+          <ellipse cx="300" cy="360" rx="58" ry="68" fill="#262422" stroke="url(#chefGold)" stroke-width="2"/>
+          <!-- gola do dólmã -->
+          <path d="M255 470 L300 440 L345 470" fill="none" stroke="url(#chefGold)" stroke-width="2"/>
+          <!-- botões do dólmã -->
+          <circle cx="278" cy="500" r="4" fill="#D4AF37"/>
+          <circle cx="322" cy="500" r="4" fill="#D4AF37"/>
+          <circle cx="278" cy="540" r="4" fill="#D4AF37"/>
+          <circle cx="322" cy="540" r="4" fill="#D4AF37"/>
+          <!-- monograma -->
+          <text x="300" y="650" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="22" fill="#D4AF37" letter-spacing="3">É. R.</text>
+        </svg>
+        <div class="chef-frame" aria-hidden="true"></div>
+      </div>
+
+      <div class="chef-text reveal-right">
+        <span class="eyebrow">Chef Executivo</span>
+        <h2 class="section-title">Étienne Rousseau</h2>
+        <p class="chef-quote">"Cozinhar é o meu modo de honrar a memória — a de quem veio antes e a de quem ainda vai se sentar à mesa."</p>
+        <p>
+          Formado pela Escola Ferrandi de Paris e forjado em cozinhas com três estrelas Michelin na França e
+          na Itália, Étienne assumiu o comando do La Belle Époque em 2014. Sua cozinha é um diálogo entre a
+          técnica clássica francesa e o respeito absoluto pela sazonalidade dos ingredientes.
+        </p>
+        <p>
+          Sob sua direção, o restaurante conquistou sua terceira estrela Michelin e tornou-se referência em
+          hospitalidade discreta e sabor memorável, recebendo chefes de estado, artistas e apaixonados pela
+          boa mesa de todo o mundo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GALERIA ===================== -->
+  <section class="gallery" id="galeria">
+    <div class="container">
+      <div class="section-heading reveal-fade">
+        <span class="eyebrow">Instantes à Mesa</span>
+        <h2 class="section-title">Galeria</h2>
+      </div>
+
+      <div class="gallery-grid">
+        <figure class="gallery-item reveal-fade">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80" alt="Prato refinado de alta gastronomia" loading="lazy" />
+          <figcaption>Composição de Outono</figcaption>
+        </figure>
+        <figure class="gallery-item gallery-item-tall reveal-fade">
+          <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=800&q=80" alt="Salão elegante do restaurante" loading="lazy" />
+          <figcaption>O Salão Principal</figcaption>
+        </figure>
+        <figure class="gallery-item reveal-fade">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Sobremesa sofisticada" loading="lazy" />
+          <figcaption>Doce Finale</figcaption>
+        </figure>
+        <figure class="gallery-item reveal-fade">
+          <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=800&q=80" alt="Prato de carne nobre" loading="lazy" />
+          <figcaption>Filet Rossini</figcaption>
+        </figure>
+        <figure class="gallery-item gallery-item-wide reveal-fade">
+          <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1200&q=80" alt="Mesa posta com taças de vinho" loading="lazy" />
+          <figcaption>À Luz de Velas</figcaption>
+        </figure>
+        <figure class="gallery-item reveal-fade">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80" alt="Detalhe de prato gourmet" loading="lazy" />
+          <figcaption>Arte no Prato</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DEPOIMENTOS ===================== -->
+  <section class="testimonials" id="depoimentos">
+    <div class="container">
+      <div class="section-heading reveal-fade">
+        <span class="eyebrow">Palavras de Nossos Convidados</span>
+        <h2 class="section-title">Depoimentos</h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <blockquote class="testimonial-card reveal-fade">
+          <span class="quote-mark" aria-hidden="true">"</span>
+          <p>Uma experiência transcendental. Cada prato conta uma história, e o serviço é tão discreto quanto impecável. Voltarei sempre que estiver em Paris.</p>
+          <footer>
+            <strong>Isabela Montenegro</strong>
+            <span>São Paulo, Brasil</span>
+          </footer>
+        </blockquote>
+
+        <blockquote class="testimonial-card reveal-fade">
+          <span class="quote-mark" aria-hidden="true">"</span>
+          <p>O Filet Rossini é simplesmente inesquecível. Ambiente elegante, atendimento atencioso e uma carta de vinhos à altura de qualquer expectativa.</p>
+          <footer>
+            <strong>Laurent Fontaine</strong>
+            <span>Lyon, França</span>
+          </footer>
+        </blockquote>
+
+        <blockquote class="testimonial-card reveal-fade">
+          <span class="quote-mark" aria-hidden="true">"</span>
+          <p>Celebramos nosso aniversário de casamento no La Belle Époque e cada detalhe foi pensado com um carinho raro. Uma verdadeira jornada sensorial.</p>
+          <footer>
+            <strong>Sophia &amp; Marco Ferreira</strong>
+            <span>Lisboa, Portugal</span>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== RESERVAS ===================== -->
+  <section class="reservations" id="reservas">
+    <div class="container reservations-grid">
+      <div class="reservations-text reveal-left">
+        <span class="eyebrow">Sua Mesa Espera</span>
+        <h2 class="section-title">Faça Sua Reserva</h2>
+        <p>
+          Reserve sua mesa e viva uma noite memorável. Recomendamos reservar com pelo menos 48 horas de
+          antecedência, especialmente para jantares aos finais de semana.
+        </p>
+        <ul class="reservations-list">
+          <li>Traje social recomendado</li>
+          <li>Menu degustação disponível mediante reserva</li>
+          <li>Cave privativa para eventos especiais</li>
+        </ul>
+      </div>
+
+      <form class="reservation-form reveal-right" id="reservation-form" novalidate>
+        <div class="form-row">
+          <label for="name">Nome Completo</label>
+          <input type="text" id="name" name="name" placeholder="Seu nome" required />
+        </div>
+
+        <div class="form-row">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+        </div>
+
+        <div class="form-row-split">
+          <div class="form-row">
+            <label for="date">Data</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+          <div class="form-row">
+            <label for="guests">Pessoas</label>
+            <select id="guests" name="guests" required>
+              <option value="" disabled selected>Selecione</option>
+              <option>1 pessoa</option>
+              <option>2 pessoas</option>
+              <option>3 pessoas</option>
+              <option>4 pessoas</option>
+              <option>5 pessoas</option>
+              <option>6+ pessoas</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-gold form-submit">Confirmar Reserva</button>
+        <p class="form-feedback" id="form-feedback" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===================== LOCALIZAÇÃO ===================== -->
+  <section class="location" id="localizacao">
+    <div class="container">
+      <div class="section-heading reveal-fade">
+        <span class="eyebrow">Venha Nos Visitar</span>
+        <h2 class="section-title">Localização</h2>
+      </div>
+
+      <div class="location-grid">
+        <div class="location-info reveal-left">
+          <p><strong>Endereço</strong><br />12 Quai de la Belle Époque, 75007 Paris, França</p>
+          <p><strong>Telefone</strong><br />+33 1 45 67 89 10</p>
+          <p><strong>E-mail</strong><br />reservas@labelleepoque.fr</p>
+        </div>
+        <div class="location-map reveal-right">
+          <iframe
+            title="Mapa de localização do La Belle Époque"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=2.290%2C48.855%2C2.310%2C48.865&layer=mapnik"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== RODAPÉ ===================== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <p class="footer-logo">La Belle&nbsp;Époque</p>
+        <p>Alta gastronomia francesa desde 1907, no coração de Paris.</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" fill="none"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" fill="none"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M15 4h-2a4 4 0 0 0-4 4v3H7v3h2v6h3v-6h2.5l.5-3H12V8a1 1 0 0 1 1-1h2Z" stroke="currentColor" fill="none"/></svg>
+          </a>
+          <a href="#" aria-label="TripAdvisor">
+            <svg viewBox="0 0 24 24"><circle cx="8" cy="13" r="3.5" stroke="currentColor" fill="none"/><circle cx="16" cy="13" r="3.5" stroke="currentColor" fill="none"/><path d="M2 8h6M16 8h6M12 8v1" stroke="currentColor" fill="none"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Horário de Funcionamento</h4>
+        <p>Terça a Sábado<br />19h00 — 23h30</p>
+        <p>Domingo (Brunch)<br />12h00 — 15h00</p>
+        <p>Segunda-feira — Fechado</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <a href="#sobre">História</a>
+        <a href="#menu">Menu</a>
+        <a href="#chef">Chef</a>
+        <a href="#reservas">Reservas</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> La Belle Époque. Todos os direitos reservados. · Restaurante fictício criado para fins de portfólio.</p>
+    </div>
+  </footer>
+
+  <!-- ===================== BOTÃO VOLTAR AO TOPO ===================== -->
+  <button id="back-to-top" aria-label="Voltar ao topo">
+    <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
