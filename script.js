@@ -63,6 +63,22 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ---------------------------------------------------------
+     2.1 SEÇÃO "MENU EM DESTAQUE" — fica oculta até o clique
+     no link "Menu" (no menu de três pontinhos ou no rodapé).
+  --------------------------------------------------------- */
+  const menuSection = document.getElementById("menu");
+
+  document.querySelectorAll('a[href="#menu"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      menuSection.classList.remove("menu-hidden");
+      requestAnimationFrame(() => {
+        menuSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  });
+
+  /* ---------------------------------------------------------
      3. PARALLAX SUAVE NO HERO
      Move a imagem de fundo em velocidade diferente do scroll.
      Usa requestAnimationFrame para evitar tremores/engasgos, e

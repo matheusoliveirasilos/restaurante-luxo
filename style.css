@@ -455,6 +455,10 @@ input, select {
 }
 
 /* ---------------------------------- Menu ---------------------------------- */
+/* ---------------------------------- Menu (Carte du Jour) ---------------------------------- */
+.menu-hidden {
+  display: none;
+}
 .menu {
   padding: var(--section-padding);
   background: var(--charbon);
