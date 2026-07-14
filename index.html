@@ -155,8 +155,8 @@
     <svg viewBox="0 0 400 20"><path d="M0 10 Q 100 -6 200 10 T 400 10" stroke="#D4AF37" stroke-width="1" fill="none" opacity="0.5"/></svg>
   </div>
 
-  <!-- ===================== MENU ===================== -->
-  <section class="menu menu-hidden" id="menu">
+  <!-- ===================== MENU (PRÉVIA) ===================== -->
+  <section class="menu" id="menu">
     <div class="container">
       <div class="section-heading reveal-fade">
         <span class="eyebrow">Carte du Jour</span>
@@ -215,6 +215,12 @@
             <p>Creme de baunilha bourbon com crosta de açúcar caramelizado.</p>
           </div>
         </div>
+      </div>
+
+      <div class="menu-cta reveal-fade">
+        <button type="button" class="btn btn-outline-gold open-full-menu" id="open-full-menu-btn">
+          Ver Cardápio Completo
+        </button>
       </div>
     </div>
   </section>
@@ -474,6 +480,273 @@
   <button id="back-to-top" aria-label="Voltar ao topo">
     <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
+
+  <!-- ===================== MODAL — CARDÁPIO COMPLETO ===================== -->
+  <div class="menu-modal" id="menu-modal" aria-hidden="true">
+    <div class="menu-modal-overlay" id="menu-modal-overlay" tabindex="-1"></div>
+
+    <div class="menu-modal-panel" role="dialog" aria-modal="true" aria-labelledby="menu-modal-title">
+
+      <button class="menu-modal-back" id="menu-modal-close" aria-label="Fechar cardápio e voltar ao site">
+        <span class="menu-modal-back-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="menu-modal-back-label">Voltar ao Site</span>
+      </button>
+
+      <div class="menu-modal-scroll" id="menu-modal-scroll">
+
+        <header class="menu-modal-header">
+          <span class="eyebrow">La Belle Époque · Est. 1907</span>
+          <h2 class="menu-modal-title" id="menu-modal-title">Carte&nbsp;Complète</h2>
+          <div class="ornament-divider" aria-hidden="true">
+            <svg viewBox="0 0 200 24"><path d="M0 12 C 40 0, 60 24, 100 12 C 140 0, 160 24, 200 12" stroke="#D4AF37" stroke-width="1" fill="none"/><circle cx="100" cy="12" r="3" fill="#D4AF37"/></svg>
+          </div>
+          <p class="menu-modal-subtitle">Uma jornada completa pela cozinha do Chef Étienne Rousseau — da entrada à última taça.</p>
+        </header>
+
+        <nav class="menu-modal-tabs" id="menu-modal-tabs" aria-label="Categorias do cardápio">
+          <a href="#cat-entradas" class="menu-tab active" data-cat="cat-entradas">Entradas</a>
+          <a href="#cat-saladas" class="menu-tab" data-cat="cat-saladas">Saladas &amp; Sopas</a>
+          <a href="#cat-massas" class="menu-tab" data-cat="cat-massas">Massas</a>
+          <a href="#cat-carnes" class="menu-tab" data-cat="cat-carnes">Carnes</a>
+          <a href="#cat-aves" class="menu-tab" data-cat="cat-aves">Aves</a>
+          <a href="#cat-peixes" class="menu-tab" data-cat="cat-peixes">Peixes &amp; Frutos do Mar</a>
+          <a href="#cat-sobremesas" class="menu-tab" data-cat="cat-sobremesas">Sobremesas</a>
+          <a href="#cat-bebidas" class="menu-tab" data-cat="cat-bebidas">Bebidas</a>
+          <a href="#cat-degustacao" class="menu-tab" data-cat="cat-degustacao">Menu Degustação</a>
+        </nav>
+
+        <div class="menu-modal-content">
+
+          <!-- ENTRADAS -->
+          <section class="menu-modal-category" id="cat-entradas">
+            <h3 class="menu-modal-category-title">Entradas</h3>
+            <p class="menu-modal-category-note">Para despertar o paladar antes da jornada principal.</p>
+
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Foie Gras Poêlé</span><span class="dots"></span><span class="price">R$ 98</span></div>
+              <p>Fígado de pato selado, compota de figos ao Porto e brioche tostado.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Vieiras Doradas</span><span class="dots"></span><span class="price">R$ 112</span></div>
+              <p>Vieiras da Normandia, purê de couve-flor trufada e manteiga de avelãs.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Consommé Impérial</span><span class="dots"></span><span class="price">R$ 76</span></div>
+              <p>Caldo clarificado de ave, quenelle de aves e ervas finas do jardim.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Tartare de Salmão Nordique</span><span class="dots"></span><span class="price">R$ 89</span></div>
+              <p>Salmão fresco cortado à faca, alcaparras, endro e torradas de centeio.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Escargots à la Bourguignonne</span><span class="dots"></span><span class="price">R$ 84</span></div>
+              <p>Escargots em manteiga de alho e salsa, gratinados em concha de porcelana.</p>
+            </div>
+          </section>
+
+          <!-- SALADAS & SOPAS -->
+          <section class="menu-modal-category" id="cat-saladas">
+            <h3 class="menu-modal-category-title">Saladas &amp; Sopas</h3>
+            <p class="menu-modal-category-note">Frescor e conforto em harmonia.</p>
+
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Salade Lyonnaise</span><span class="dots"></span><span class="price">R$ 62</span></div>
+              <p>Folhas amargas, lardons crocantes, ovo poché e vinagrete de mostarda Dijon.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Velouté de Aspargos Brancos</span><span class="dots"></span><span class="price">R$ 58</span></div>
+              <p>Creme aveludado de aspargos brancos, azeite trufado e crocante de avelã.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Salada de Endívias e Nozes Caramelizadas</span><span class="dots"></span><span class="price">R$ 65</span></div>
+              <p>Endívias assadas, queijo Roquefort, nozes caramelizadas e mel de lavanda.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Soupe à l'Oignon Gratinée</span><span class="dots"></span><span class="price">R$ 54</span></div>
+              <p>Sopa de cebolas caramelizadas, caldo de carne, crouton e queijo Gruyère gratinado.</p>
+            </div>
+          </section>
+
+          <!-- MASSAS -->
+          <section class="menu-modal-category" id="cat-massas">
+            <h3 class="menu-modal-category-title">Massas</h3>
+            <p class="menu-modal-category-note">Tradição italiana com sotaque francês.</p>
+
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Tagliatelle au Homard</span><span class="dots"></span><span class="price">R$ 132</span></div>
+              <p>Massa artesanal, lagosta salteada em manteiga de ervas e toque de conhaque.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Risotto aux Champignons Sauvages</span><span class="dots"></span><span class="price">R$ 118</span></div>
+              <p>Risoto cremoso de cogumelos silvestres, parmesão envelhecido e trufa negra ralada.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Ravioli de Trufas Negras</span><span class="dots"></span><span class="price">R$ 145</span></div>
+              <p>Ravioli recheado de ricota e trufas, manteiga noisette e lascas de trufa fresca.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Gnocchi à la Parisienne</span><span class="dots"></span><span class="price">R$ 96</span></div>
+              <p>Nhoque de massa choux gratinado, molho mornay e ervas finas.</p>
+            </div>
+          </section>
+
+          <!-- CARNES -->
+          <section class="menu-modal-category" id="cat-carnes">
+            <h3 class="menu-modal-category-title">Carnes</h3>
+            <p class="menu-modal-category-note">Cortes nobres, cocções precisas.</p>
+
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Filet de Boeuf Rossini</span><span class="dots"></span><span class="price">R$ 245</span></div>
+              <p>Filé mignon grelhado, escalope de foie gras, molho Périgueux e batatas soufflé.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Côte de Boeuf para Dois</span><span class="dots"></span><span class="price">R$ 398</span></div>
+              <p>Costela bovina maturada 30 dias, finalizada na brasa e servida à mesa.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Carré d'Agneau en Croûte</span><span class="dots"></span><span class="price">R$ 218</span></div>
+              <p>Carré de cordeiro em crosta de ervas e pistache, jus de alecrim.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Magret de Canard Fumé</span><span class="dots"></span><span class="price">R$ 176</span></div>
+              <p>Peito de pato defumado na hora, redução de cassis e legumes glaceados.</p>
+            </div>
+          </section>
+
+          <!-- AVES -->
+          <section class="menu-modal-category" id="cat-aves">
+            <h3 class="menu-modal-category-title">Aves</h3>
+            <p class="menu-modal-category-note">Delicadeza e sabor de fazenda.</p>
+
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Canard à l'Orange</span><span class="dots"></span><span class="price">R$ 198</span></div>
+              <p>Pato assado lentamente, redução de laranja-bahia e legumes glaceados.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Poularde de Bresse Rôtie</span><span class="dots"></span><span class="price">R$ 205</span></div>
+              <p>Frango de Bresse assado inteiro, jus de ervas e purê de batata trufado.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Suprême de Volaille aux Morilles</span><span class="dots"></span><span class="price">R$ 168</span></div>
+              <p>Peito de frango, molho cremoso de cogumelos morille e vinho branco.</p>
+            </div>
+          </section>
+
+          <!-- PEIXES & FRUTOS DO MAR -->
+          <section class="menu-modal-category" id="cat-peixes">
+            <h3 class="menu-modal-category-title">Peixes &amp; Frutos do Mar</h3>
+            <p class="menu-modal-category-note">Direto do mar à mesa, com técnica clássica.</p>
+
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Bouillabaisse Royale</span><span class="dots"></span><span class="price">R$ 219</span></div>
+              <p>Ensopado de frutos do mar do Mediterrâneo, rouille e crostini de alho.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Bar Grillé, Beurre Blanc</span><span class="dots"></span><span class="price">R$ 186</span></div>
+              <p>Robalo grelhado na pele, molho beurre blanc e aspargos salteados.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Homard Thermidor</span><span class="dots"></span><span class="price">R$ 265</span></div>
+              <p>Lagosta gratinada em molho cremoso de mostarda e conhaque, servida na casca.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Saint-Jacques en Croûte de Sel</span><span class="dots"></span><span class="price">R$ 178</span></div>
+              <p>Vieiras assadas em crosta de sal de ervas, purê de aipo-rábano.</p>
+            </div>
+          </section>
+
+          <!-- SOBREMESAS -->
+          <section class="menu-modal-category" id="cat-sobremesas">
+            <h3 class="menu-modal-category-title">Sobremesas</h3>
+            <p class="menu-modal-category-note">O ponto final, doce e memorável.</p>
+
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Soufflé au Chocolat</span><span class="dots"></span><span class="price">R$ 68</span></div>
+              <p>Soufflé de chocolate 70%, sorvete de baunilha de Madagascar.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Tarte Tatin</span><span class="dots"></span><span class="price">R$ 62</span></div>
+              <p>Torta invertida de maçã caramelizada com crème fraîche.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Crème Brûlée</span><span class="dots"></span><span class="price">R$ 58</span></div>
+              <p>Creme de baunilha bourbon com crosta de açúcar caramelizado.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Mille-Feuille à la Vanille</span><span class="dots"></span><span class="price">R$ 64</span></div>
+              <p>Camadas de massa folhada crocante, creme de baunilha de Madagascar e glacê real.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Paris-Brest Praliné</span><span class="dots"></span><span class="price">R$ 66</span></div>
+              <p>Massa choux em coroa, recheio de creme praliné de avelãs torradas.</p>
+            </div>
+          </section>
+
+          <!-- BEBIDAS -->
+          <section class="menu-modal-category" id="cat-bebidas">
+            <h3 class="menu-modal-category-title">Bebidas</h3>
+            <p class="menu-modal-category-note">Vinhos, coquetéis autorais e opções sem álcool.</p>
+
+            <h4 class="menu-modal-subcategory">Vinhos</h4>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Chablis Grand Cru <em>(taça)</em></span><span class="dots"></span><span class="price">R$ 98</span></div>
+              <p>Borgonha, França — mineral e cítrico, acompanha peixes e frutos do mar.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Château Margaux <em>(taça)</em></span><span class="dots"></span><span class="price">R$ 145</span></div>
+              <p>Bordeaux, França — encorpado, notas de frutas negras e especiarias.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Champagne Dom Pérignon</span><span class="dots"></span><span class="price">R$ 320</span></div>
+              <p>Champagne, França — elegante e efervescente, garrafa de 750ml.</p>
+            </div>
+
+            <h4 class="menu-modal-subcategory">Coquetéis Autorais</h4>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Kir Royale</span><span class="dots"></span><span class="price">R$ 48</span></div>
+              <p>Champagne e licor de cassis, servido em taça flute gelada.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>French&nbsp;75</span><span class="dots"></span><span class="price">R$ 52</span></div>
+              <p>Gin, suco de limão siciliano, açúcar e espumante brut.</p>
+            </div>
+
+            <h4 class="menu-modal-subcategory">Sem Álcool</h4>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Limonada de Lavanda</span><span class="dots"></span><span class="price">R$ 28</span></div>
+              <p>Limonada artesanal com xarope de lavanda e folhas de hortelã fresca.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Água San Pellegrino</span><span class="dots"></span><span class="price">R$ 22</span></div>
+              <p>Água mineral com gás, garrafa de 500ml.</p>
+            </div>
+          </section>
+
+          <!-- MENU DEGUSTAÇÃO -->
+          <section class="menu-modal-category menu-modal-category-featured" id="cat-degustacao">
+            <h3 class="menu-modal-category-title">Menu Degustação</h3>
+            <p class="menu-modal-category-note">A experiência completa do Chef Étienne Rousseau, em sete tempos harmonizados.</p>
+
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Menu Degustação — 7 Tempos</span><span class="dots"></span><span class="price">R$ 480 <em>/ pessoa</em></span></div>
+              <p>Consommé Impérial · Vieiras Doradas · Velouté de Aspargos · Ravioli de Trufas · Filet Rossini · Pré-sobremesa · Soufflé au Chocolat.</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-head"><span>Harmonização de Vinhos</span><span class="dots"></span><span class="price">R$ 220 <em>/ pessoa</em></span></div>
+              <p>Seleção de taças harmonizadas pelo nosso sommelier para cada tempo do menu degustação.</p>
+            </div>
+          </section>
+
+          <p class="menu-modal-footnote">
+            Todos os pratos podem conter traços de glúten, lactose e frutos do mar. Consulte nossa equipe sobre
+            restrições alimentares. Preços em reais (R$), sujeitos a alteração sem aviso prévio. Serviço de 10% opcional.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

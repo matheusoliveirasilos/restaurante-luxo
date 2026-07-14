@@ -96,25 +96,140 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ---------------------------------------------------------
-     2.1 SEÇÃO "MENU EM DESTAQUE" — fica oculta até o clique
-     no link "Menu" (no menu de três pontinhos ou no rodapé).
+     2.1 MODAL — CARDÁPIO COMPLETO
+     Abre uma experiência em tela cheia com o cardápio completo,
+     isolando o foco do usuário até que ele decida voltar ao site.
   --------------------------------------------------------- */
-  const menuSection = document.getElementById("menu");
+  const menuModal = document.getElementById("menu-modal");
+  const menuModalOverlay = document.getElementById("menu-modal-overlay");
+  const menuModalClose = document.getElementById("menu-modal-close");
+  const menuModalScroll = document.getElementById("menu-modal-scroll");
+  const menuModalTabs = document.querySelectorAll(".menu-tab");
+  const menuModalCategories = document.querySelectorAll(".menu-modal-category");
+  const menuModalTriggers = document.querySelectorAll(
+    'a[href="#menu"], #open-full-menu-btn'
+  );
 
-  document.querySelectorAll('a[href="#menu"]').forEach((link) => {
-    link.addEventListener("click", (event) => {
+  let lastFocusedElement = null;
+
+  const getFocusableModalElements = () =>
+    menuModal.querySelectorAll(
+      'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+
+  const openMenuModal = (triggerEl) => {
+    lastFocusedElement = triggerEl || document.activeElement;
+
+    // Garante que o menu mobile feche antes de abrir o cardápio.
+    if (navbar.classList.contains("menu-open")) {
+      closeMobileMenu();
+    }
+
+    menuModal.classList.add("is-open");
+    menuModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("nav-locked");
+
+    if (menuModalScroll) {
+      menuModalScroll.scrollTop = 0;
+    }
+
+    setTimeout(() => {
+      menuModalClose.focus();
+    }, 350);
+  };
+
+  const closeMenuModal = () => {
+    if (!menuModal.classList.contains("is-open")) return;
+    menuModal.classList.remove("is-open");
+    menuModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("nav-locked");
+
+    if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+      lastFocusedElement.focus();
+    }
+  };
+
+  menuModalTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
       event.preventDefault();
-      menuSection.classList.remove("menu-hidden");
-      requestAnimationFrame(() => {
-        menuSection.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
+      openMenuModal(trigger);
     });
   });
 
-  // Se a página for aberta diretamente com #menu na URL (link compartilhado,
-  // botão "voltar" do navegador etc.), revela a seção em vez de deixá-la oculta.
+  menuModalClose.addEventListener("click", closeMenuModal);
+  menuModalOverlay.addEventListener("click", closeMenuModal);
+
+  // Fecha o cardápio ao pressionar Esc, e mantém o foco preso dentro
+  // do modal (acessibilidade) enquanto ele estiver aberto.
+  document.addEventListener("keydown", (event) => {
+    if (!menuModal.classList.contains("is-open")) return;
+
+    if (event.key === "Escape") {
+      closeMenuModal();
+      return;
+    }
+
+    if (event.key === "Tab") {
+      const focusable = Array.from(getFocusableModalElements());
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  // Navegação por categorias dentro do cardápio: rola suavemente até a
+  // seção correspondente sem afetar a URL da página principal.
+  menuModalTabs.forEach((tab) => {
+    tab.addEventListener("click", (event) => {
+      event.preventDefault();
+      const targetId = tab.dataset.cat;
+      const targetSection = document.getElementById(targetId);
+      if (!targetSection || !menuModalScroll) return;
+
+      const offset = targetSection.offsetTop - 110;
+      menuModalScroll.scrollTo({ top: offset, behavior: "smooth" });
+    });
+  });
+
+  // Destaca a categoria ativa nas abas conforme o usuário rola o cardápio.
+  if (menuModalCategories.length && menuModalScroll) {
+    const setActiveTab = (id) => {
+      menuModalTabs.forEach((tab) => {
+        tab.classList.toggle("active", tab.dataset.cat === id);
+      });
+    };
+
+    const categoryObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveTab(entry.target.id);
+          }
+        });
+      },
+      {
+        root: menuModalScroll,
+        threshold: 0.2,
+        rootMargin: "-100px 0px -55% 0px",
+      }
+    );
+
+    menuModalCategories.forEach((section) => categoryObserver.observe(section));
+  }
+
+  // Permite abrir o cardápio diretamente via link compartilhado (#menu na URL).
   if (window.location.hash === "#menu") {
-    menuSection.classList.remove("menu-hidden");
+    window.addEventListener("load", () => {
+      setTimeout(() => openMenuModal(), 900);
+    });
   }
 
   /* ---------------------------------------------------------
