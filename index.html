@@ -2,17 +2,20 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>La Belle Époque — Restaurante de Alta Gastronomia em Paris</title>
   <meta name="description" content="La Belle Époque é um restaurante de alta gastronomia que celebra a tradição francesa desde 1907. Reserve sua mesa e viva uma experiência sensorial inesquecível." />
   <meta name="keywords" content="restaurante de luxo, alta gastronomia, fine dining, cozinha francesa, La Belle Époque, chef executivo, reservas" />
   <meta name="author" content="La Belle Époque" />
   <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0F0F0F" />
 
   <!-- Open Graph / SEO social -->
   <meta property="og:title" content="La Belle Époque — Alta Gastronomia Francesa" />
   <meta property="og:description" content="Uma experiência gastronômica atemporal no coração de Paris desde 1907." />
   <meta property="og:type" content="restaurant.restaurant" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,6 +24,8 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <a href="#hero" class="skip-link">Pular para o conteúdo principal</a>
 
   <!-- ===================== LOADING SCREEN ===================== -->
   <div id="loading-screen" aria-hidden="true">
@@ -40,20 +45,42 @@
     <div class="navbar-inner">
       <a href="#hero" class="nav-logo">La Belle&nbsp;Époque</a>
 
-      <nav class="nav-links" id="nav-links">
-        <a href="#sobre">História</a>
-        <a href="#menu">Menu</a>
-        <a href="#chef">Chef</a>
-        <a href="#galeria">Galeria</a>
-        <a href="#depoimentos">Depoimentos</a>
-        <a href="#reservas">Reservas</a>
-        <a href="#localizacao">Localização</a>
+      <nav class="nav-links" id="nav-links" aria-label="Navegação principal">
+        <a href="#sobre" data-section="sobre">
+          <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h9l5 5v11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.3"/><path d="M14 4v5h5M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>
+          <span class="nav-label">História</span>
+        </a>
+        <a href="#menu" data-section="menu">
+          <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3v8m0 0v10M6 11a2.5 2.5 0 0 0 2.5-2.5V3M6 11a2.5 2.5 0 0 1-2.5-2.5V3M18 3c-2 0-3 2-3 5s1 3 3 3v10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="nav-label">Menu</span>
+        </a>
+        <a href="#chef" data-section="chef">
+          <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 10c0-2.8 2-4.5 5-4.5s5 1.7 5 4.5c1.2.3 2 1.4 2 2.7 0 .7-.3 1.4-.7 1.8H5.7c-.4-.4-.7-1.1-.7-1.8 0-1.3.8-2.4 2-2.7Z" stroke="currentColor" stroke-width="1.3"/><path d="M6 19.5h12M7 14.5v4M17 14.5v4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>
+          <span class="nav-label">Chef</span>
+        </a>
+        <a href="#galeria" data-section="galeria">
+          <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="4.5" width="17" height="15" rx="1.2" stroke="currentColor" stroke-width="1.3"/><circle cx="8.5" cy="9.5" r="1.6" stroke="currentColor" stroke-width="1.3"/><path d="M4.5 16.5 9 12l3 3 3.5-4L20 16" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="nav-label">Galeria</span>
+        </a>
+        <a href="#depoimentos" data-section="depoimentos">
+          <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 8.5c-1.7 0-3 1.3-3 3v1.2c0 1.7 1.3 3 3 3M7 8.5v6.7M7 8.5c1.2-.6 2.5-.9 3.8-.9M17 8.5c-1.7 0-3 1.3-3 3v1.2c0 1.7 1.3 3 3 3m0-7.2v6.7m0-6.7c1.2-.6 2.5-.9 3.8-.9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="nav-label">Depoimentos</span>
+        </a>
+        <a href="#reservas" data-section="reservas">
+          <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5.5" width="16" height="14.5" rx="1.2" stroke="currentColor" stroke-width="1.3"/><path d="M4 9.5h16M8 3.5v3M16 3.5v3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="8.5" cy="14" r="1" fill="currentColor"/><circle cx="12" cy="14" r="1" fill="currentColor"/><circle cx="15.5" cy="14" r="1" fill="currentColor"/></svg></span>
+          <span class="nav-label">Reservas</span>
+        </a>
+        <a href="#localizacao" data-section="localizacao">
+          <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.3-7-11.5a7 7 0 1 1 14 0C19 14.7 12 21 12 21Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.3"/></svg></span>
+          <span class="nav-label">Localização</span>
+        </a>
+        <a href="#reservas" class="nav-cta-mobile">Reservar Mesa</a>
       </nav>
 
       <a href="#reservas" class="btn btn-gold nav-cta">Reservar Mesa</a>
 
-      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav-toggle-bars"><span></span><span></span><span></span></span>
       </button>
     </div>
     <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
@@ -344,12 +371,12 @@
       <form class="reservation-form reveal-right" id="reservation-form" novalidate>
         <div class="form-row">
           <label for="name">Nome Completo</label>
-          <input type="text" id="name" name="name" placeholder="Seu nome" required />
+          <input type="text" id="name" name="name" placeholder="Seu nome" autocomplete="name" required />
         </div>
 
         <div class="form-row">
           <label for="email">E-mail</label>
-          <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+          <input type="email" id="email" name="email" placeholder="seu@email.com" autocomplete="email" required />
         </div>
 
         <div class="form-row-split">
@@ -411,13 +438,13 @@
         <p>Alta gastronomia francesa desde 1907, no coração de Paris.</p>
         <div class="social-icons">
           <a href="#" aria-label="Instagram">
-            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" fill="none"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" fill="none"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" fill="none"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" fill="none"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
           </a>
           <a href="#" aria-label="Facebook">
-            <svg viewBox="0 0 24 24"><path d="M15 4h-2a4 4 0 0 0-4 4v3H7v3h2v6h3v-6h2.5l.5-3H12V8a1 1 0 0 1 1-1h2Z" stroke="currentColor" fill="none"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 4h-2a4 4 0 0 0-4 4v3H7v3h2v6h3v-6h2.5l.5-3H12V8a1 1 0 0 1 1-1h2Z" stroke="currentColor" fill="none"/></svg>
           </a>
           <a href="#" aria-label="TripAdvisor">
-            <svg viewBox="0 0 24 24"><circle cx="8" cy="13" r="3.5" stroke="currentColor" fill="none"/><circle cx="16" cy="13" r="3.5" stroke="currentColor" fill="none"/><path d="M2 8h6M16 8h6M12 8v1" stroke="currentColor" fill="none"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="8" cy="13" r="3.5" stroke="currentColor" fill="none"/><circle cx="16" cy="13" r="3.5" stroke="currentColor" fill="none"/><path d="M2 8h6M16 8h6M12 8v1" stroke="currentColor" fill="none"/></svg>
           </a>
         </div>
       </div>

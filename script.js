@@ -5,6 +5,8 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   /* ---------------------------------------------------------
      1. LOADING SCREEN
      Esconde a tela de carregamento assim que a página termina
@@ -24,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navbar = document.getElementById("navbar");
   const navToggle = document.getElementById("nav-toggle");
   const navOverlay = document.getElementById("nav-overlay");
+  const navLinks = document.getElementById("nav-links");
 
   const handleNavbarScroll = () => {
     if (window.scrollY > 60) {
@@ -36,13 +39,35 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", handleNavbarScroll, { passive: true });
 
   const closeMobileMenu = () => {
+    const wasOpen = navbar.classList.contains("menu-open");
     navbar.classList.remove("menu-open");
     navToggle.setAttribute("aria-expanded", "false");
+    navToggle.setAttribute("aria-label", "Abrir menu");
+    document.body.classList.remove("nav-locked");
+    // Devolve o foco ao botão para quem navega por teclado.
+    if (wasOpen && document.activeElement && document.activeElement.closest(".nav-links")) {
+      navToggle.focus();
+    }
+  };
+
+  const openMobileMenu = () => {
+    navbar.classList.add("menu-open");
+    navToggle.setAttribute("aria-expanded", "true");
+    navToggle.setAttribute("aria-label", "Fechar menu");
+    document.body.classList.add("nav-locked");
+    // Move o foco para o primeiro item do menu (acessibilidade via teclado).
+    const firstLink = navLinks.querySelector("a");
+    if (firstLink) {
+      setTimeout(() => firstLink.focus(), 350);
+    }
   };
 
   navToggle.addEventListener("click", () => {
-    const isOpen = navbar.classList.toggle("menu-open");
-    navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    if (navbar.classList.contains("menu-open")) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
   });
 
   // Fecha o menu mobile ao clicar em um link (item do menu)
@@ -62,6 +87,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Fecha o menu automaticamente se a tela for redimensionada para o layout desktop
+  // (evita que o menu fique "preso" aberto ao girar o dispositivo ou redimensionar a janela)
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 860 && navbar.classList.contains("menu-open")) {
+      closeMobileMenu();
+    }
+  });
+
   /* ---------------------------------------------------------
      2.1 SEÇÃO "MENU EM DESTAQUE" — fica oculta até o clique
      no link "Menu" (no menu de três pontinhos ou no rodapé).
@@ -77,6 +110,12 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
+
+  // Se a página for aberta diretamente com #menu na URL (link compartilhado,
+  // botão "voltar" do navegador etc.), revela a seção em vez de deixá-la oculta.
+  if (window.location.hash === "#menu") {
+    menuSection.classList.remove("menu-hidden");
+  }
 
   /* ---------------------------------------------------------
      3. PARALLAX SUAVE NO HERO
@@ -106,8 +145,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  if (isTouchDevice) {
-    // Em dispositivos de toque, mantém a imagem fixa e estável (sem parallax) para não tremer.
+  if (isTouchDevice || prefersReducedMotion) {
+    // Em dispositivos de toque ou com "reduzir movimento" ativado, mantém a imagem
+    // fixa e estável (sem parallax) para não tremer nem causar desconforto.
     heroBg.style.transform = "translate3d(0, 0, 0) scale(1.05)";
   } else {
     window.addEventListener("scroll", handleParallax, { passive: true });
@@ -145,6 +185,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const animateCounter = (el) => {
     const target = parseInt(el.dataset.target, 10);
     const suffix = el.dataset.suffix || "";
+
+    // Respeita a preferência por movimento reduzido: mostra o valor final direto.
+    if (prefersReducedMotion) {
+      el.textContent = target.toLocaleString("pt-BR") + suffix;
+      return;
+    }
+
     const duration = 1800; // ms
     const startTime = performance.now();
 
@@ -192,27 +239,54 @@ document.addEventListener("DOMContentLoaded", () => {
     dateInput.setAttribute("min", today);
   }
 
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const setFieldInvalid = (field, invalid) => {
+    if (!field) return;
+    field.classList.toggle("is-invalid", invalid);
+    field.setAttribute("aria-invalid", invalid ? "true" : "false");
+  };
+
   reservationForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const date = document.getElementById("date").value;
-    const guests = document.getElementById("guests").value;
+    const nameField = document.getElementById("name");
+    const emailField = document.getElementById("email");
+    const dateField = document.getElementById("date");
+    const guestsField = document.getElementById("guests");
 
-    if (!name || !email || !date || !guests) {
+    const name = nameField.value.trim();
+    const email = emailField.value.trim();
+    const date = dateField.value;
+    const guests = guestsField.value;
+
+    const isEmailValid = emailPattern.test(email);
+
+    setFieldInvalid(nameField, !name);
+    setFieldInvalid(emailField, !email || !isEmailValid);
+    setFieldInvalid(dateField, !date);
+    setFieldInvalid(guestsField, !guests);
+
+    if (!name || !date || !guests) {
+      formFeedback.className = "form-feedback is-error";
       formFeedback.textContent = "Por favor, preencha todos os campos para continuar.";
-      formFeedback.style.color = "#e08b8b";
+      return;
+    }
+
+    if (!email || !isEmailValid) {
+      formFeedback.className = "form-feedback is-error";
+      formFeedback.textContent = "Por favor, informe um e-mail válido.";
       return;
     }
 
     // Feedback de sucesso (simulação — sem envio real de dados)
-    formFeedback.style.color = "#e6c866";
+    formFeedback.className = "form-feedback is-success";
     formFeedback.textContent = `Obrigado, ${name.split(" ")[0]}! Sua solicitação de reserva para ${guests} em ${new Date(
       date + "T00:00:00"
     ).toLocaleDateString("pt-BR")} foi recebida. Em breve enviaremos a confirmação para ${email}.`;
 
     reservationForm.reset();
+    [nameField, emailField, dateField, guestsField].forEach((field) => setFieldInvalid(field, false));
   });
 
   /* ---------------------------------------------------------
@@ -237,5 +311,46 @@ document.addEventListener("DOMContentLoaded", () => {
      8. ANO ATUAL NO RODAPÉ
   --------------------------------------------------------- */
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* ---------------------------------------------------------
+     9. SCROLL SPY — destaca o item do menu correspondente
+     à seção visível no momento (funciona no menu desktop e no mobile,
+     pois ambos compartilham os mesmos links).
+  --------------------------------------------------------- */
+  const navLinksWithSection = document.querySelectorAll(".nav-links a[data-section]");
+
+  if (navLinksWithSection.length) {
+    const sectionMap = new Map();
+    navLinksWithSection.forEach((link) => {
+      const section = document.getElementById(link.dataset.section);
+      if (section) sectionMap.set(section, link);
+    });
+
+    const setActiveLink = (activeSection) => {
+      navLinksWithSection.forEach((link) => {
+        const isActive = link.dataset.section === activeSection;
+        link.classList.toggle("active", isActive);
+        if (isActive) {
+          link.setAttribute("aria-current", "true");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+    };
+
+    const spyObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const link = sectionMap.get(entry.target);
+            if (link) setActiveLink(link.dataset.section);
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: "-30% 0px -50% 0px" }
+    );
+
+    sectionMap.forEach((_link, section) => spyObserver.observe(section));
+  }
 
 });
